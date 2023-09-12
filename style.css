@@ -1,7 +1,96 @@
+html {
+  min-height: 100%;
+}
+
 body {
-  background-color: lightpink;
+  background: linear-gradient(135deg, rgb(181, 150, 174) 0%, rgb(188, 188, 154) 55%, rgb(185, 157, 194) 75%);
+
+  font-family: "Comfortaa", cursive;
+  /* font-family: "Sofia Sans Condensed", sans-serif; */
 }
 
 .update-controller {
   display: none;
+}
+
+.tagline {
+  text-align: center;
+  padding-left: 150px;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+#date {
+  float: right;
+  font-size: 20px;
+  padding-right: 20px;
+}
+
+.columns {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+}
+
+.colums_1 {
+  background-color: lightblue;
+  margin: 25px 100px 20px 100px;
+  padding: 20px 0px 100px 0px;
+  border-radius: 10px;
+}
+
+.to-do-input {
+  max-width: 700px;
+  display: flex;
+  padding: 10px 0;
+}
+
+.input-header {
+  position: relative;
+  max-width: 800px;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.to-do-input > input[type="text"] {
+  width: 90%;
+  color: #333;
+  border: none;
+  border-bottom: 2px solid rgb(41, 35, 36);
+  background: none;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Ændre baggrundsfarve ved hover */
+input:hover {
+  background-color: #f0f0f0;
+}
+
+button {
+  margin-left: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+textarea {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: montserrat;
+  font-size: 16px;
+  color: #333;
 }
