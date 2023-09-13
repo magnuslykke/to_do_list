@@ -10,7 +10,7 @@ const itemsArray = localStorage.getItem("items") ? JSON.parse(localStorage.getIt
 
 const completedItemsArray = [];
 //const completedItemsArray = localStorage.getItem("completedItems") ? JSON.parse(localStorage.getItem("completedItems")) : [];
-console.log(itemsArray);
+console.log("hej hej hej", itemsArray);
 // console.log(completedItemsArray);
 
 document.querySelector("#enter").addEventListener("click", () => {
@@ -169,8 +169,19 @@ function moveItemToCompleted(evt) {
   const itemToMove = evt.target.parentElement.parentElement.parentElement;
   const completedList = document.querySelector(".completed-list");
   //   const itemToMove = document.querySelectorAll(".item")[i];
-  console.log("itemToMove.value", itemToMove.querySelector(".input-controller textarea"));
+  console.log("itemToMove.value", itemToMove.querySelector(".input-controller textarea").textContent);
   completedItemsArray.push(itemToMove.querySelector(".input-controller textarea").value);
+  //   console.log(itemToMove);
+
+  const itemToMoveString = itemToMove.querySelector(".input-controller textarea").textContent;
+
+  console.log(
+    "findNewItem",
+    itemsArray.findIndex((elm) => elm === itemToMoveString)
+  );
+  const indexOfItemToDelete = itemsArray.findIndex((elm) => elm === itemToMoveString);
+  itemsArray.splice(indexOfItemToDelete, 1);
+
   completedList.appendChild(itemToMove);
   // Opdater opgavens status til 'completed'
   //localStorage.setItem("items", JSON.stringify(itemsArray));
@@ -184,6 +195,8 @@ function moveItemToCompleted(evt) {
 
 function saveToLocalStorage() {
   localStorage.setItem("items", JSON.stringify(itemsArray));
+  console.log(itemsArray);
+  localStorage.setItem("completedItems", JSON.stringify(completedItemsArray));
 }
 
 function displayDate() {
