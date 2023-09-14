@@ -4,14 +4,16 @@ window.addEventListener("load", sidenLoades);
 
 function sidenLoades() {
   console.log("tjek om lortet virker");
+  displayDate();
+  displayItems();
 }
+// const completedItemsArray = [];
 
 const itemsArray = localStorage.getItem("items") ? JSON.parse(localStorage.getItem("items")) : [];
 
-const completedItemsArray = [];
-//const completedItemsArray = localStorage.getItem("completedItems") ? JSON.parse(localStorage.getItem("completedItems")) : [];
-console.log("hej hej hej", itemsArray, completedItemsArray);
-// console.log(completedItemsArray);
+const completedItemsArray = localStorage.getItem("completedItems") ? JSON.parse(localStorage.getItem("completedItems")) : [];
+// console.log("hej hej hej", itemsArray, completedItemsArray);
+console.log(completedItemsArray);
 
 document.querySelector("#enter").addEventListener("click", () => {
   const item = document.querySelector("#item");
@@ -37,6 +39,7 @@ function createItem(itemText) {
 
 function displayItems() {
   let items = "";
+  let completed = "";
   for (let i = 0; i < itemsArray.length; i++) {
     items += `<div class="item">
   <div class="input-controller">
@@ -54,7 +57,7 @@ function displayItems() {
   </div>`;
   }
   for (let i = 0; i < completedItemsArray.length; i++) {
-    items += `<div class="item completed">
+    completed += `<div class="item completed">
       <div class="input-controller">
         <textarea disabled>${completedItemsArray[i]}</textarea>
         <div class="edit-controller">
@@ -70,6 +73,7 @@ function displayItems() {
     </div>`;
   }
   document.querySelector(".to-do-list").innerHTML = items;
+  document.querySelector(".completed-list").innerHTML = completed;
   activateCheckListeners();
   activateDeleteListeners();
   activateEditListeners();
@@ -92,7 +96,7 @@ function displayItems() {
 function activateDeleteListeners() {
   let deleteBtn = document.querySelectorAll(".deleteBtn");
   deleteBtn.forEach((db, i) => {
-    db.addEventListener("click", () => {
+    db.addEventListener("click", (e) => {
       deleteItem(i);
     });
   });
@@ -100,6 +104,8 @@ function activateDeleteListeners() {
 
 function deleteItem(i) {
   itemsArray.splice(i, 1);
+
+  //   completedItemsArray.splice(i, 1);
   //   localStorage.setItem("items", JSON.stringify([itemsArray, "completedItemsArray"]));
   saveToLocalStorage();
   //   localStorage.setItem("items", JSON.stringify(itemsArray));
@@ -205,8 +211,3 @@ function displayDate() {
   console.log(date);
   document.querySelector("#date").innerHTML = date[1] + " " + date[2] + " " + date[3];
 }
-
-window.onload = function () {
-  displayDate();
-  displayItems();
-};
