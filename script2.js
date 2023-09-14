@@ -10,7 +10,7 @@ const itemsArray = localStorage.getItem("items") ? JSON.parse(localStorage.getIt
 
 const completedItemsArray = [];
 //const completedItemsArray = localStorage.getItem("completedItems") ? JSON.parse(localStorage.getItem("completedItems")) : [];
-console.log("hej hej hej", itemsArray);
+console.log("hej hej hej", itemsArray, completedItemsArray);
 // console.log(completedItemsArray);
 
 document.querySelector("#enter").addEventListener("click", () => {
